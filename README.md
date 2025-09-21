@@ -1,74 +1,61 @@
-Databricks End-to-End Data Engineering Pipeline
+End-to-End Data Engineering Pipeline with Azure Databricks
 📌 Overview
 
-This project demonstrates an end-to-end data engineering pipeline using Azure Databricks and Apache Spark.
+This project demonstrates an end-to-end data engineering pipeline built using Azure Databricks and Apache Spark.
 The pipeline simulates a real-world ETL flow: ingesting data from parquet files, transforming & cleaning it, enriching with joins, and producing aggregated outputs stored back in parquet format.
 
-⚡ Note: This project was originally developed and tested during my Azure Databricks trial account. Since the trial expired, the code is shared here as a reference. It can still be executed on Databricks Community Edition or locally with PySpark.
+⚡ Note: This project was developed during an Azure Databricks trial account. Code can be run on Databricks Community Edition or locally using PySpark.
 
 🛠 Tech Stack
-
-i. Azure Databricks (Spark cluster management, notebooks)
-
+i. Azure Databricks (notebooks & cluster management)
 ii. Apache Spark / PySpark (ETL transformations)
-
-iii. Delta/Parquet (data storage formats)
+iii. Delta/Parquet (data storage)
 
 🔄 Pipeline Steps
-
-1.) Data Ingestion
-
-Loaded sample parquet files: customers, orders, products, and regions.
-
-2.)Data Transformation
-
-Performed joins across customers, orders, and products to enrich data.
-
-Cleaned records with missing values.
-
-Applied aggregations: e.g., total sales by region/product.
-
-3.)Data Storage
-
-Saved transformed datasets back into parquet format.
-
-Output can be used for reporting / dashboards.
+a. Data Ingestion
+Load sample parquet files: customers, orders, products, and regions.
+b. Data Transformation
+Join datasets to enrich orders with customer & product info.
+Clean null or invalid records.
+Apply aggregations (e.g., total sales by region/product).
+c. Data Storage
+Save transformed datasets in parquet format.
+Ready for downstream reporting or dashboarding.
 
 📂 Repository Structure
-📁 databricks-etl-pipeline
- ┣ 📄 notebook.dbc        # Main Databricks notebook (exported)
- ┣ 📄 README.md           # Project documentation
- ┗ 📂 data/ (optional)    # Sample parquet files (if uploaded)
+📁 End-to-End-Data-Engineering-Pipeline-with-Azure-Databricks
+ ┣ 📂 notebooks_dbc/         # Original Databricks notebooks
+ ┃   ┗ 📄 etl_pipeline.dbc
+ ┣ 📂 notebooks_py/          # Exported .py notebooks for readability
+ ┃   ┣ 📄 bronze_layer.py
+ ┃   ┣ 📄 silver_layer.py
+ ┃   ┗ 📄 gold_layer.py
+ ┣ 📂 data/                  # Sample parquet datasets
+ ┃   ┣ 📄 customers_sample.parquet
+ ┃   ┗ 📄 orders_sample.parquet
+ ┣ 📄 README.md              # Project documentation
+ ┣ 📄 .gitignore             # Ignores cache, logs, and large files
+ ┗ 📄 requirements.txt       # Project dependencies
 
 🚀 How to Run
-Option 1: Run on Databricks
+Option 1: On Databricks
+i. Sign up for Community Edition: https://community.cloud.databricks.com
+ii. Import notebooks from notebooks_dbc/.
+iii. Upload sample parquet files to DBFS (optional small subset).
+iv. Run notebook cells sequentially.
 
-Create a Community Edition account: https://community.cloud.databricks.com
-
-Import the notebook.dbc.
-
-Upload sample parquet files to DBFS.
-
-Run notebook cells sequentially.
-
-Option 2: Run Locally with PySpark
-
+Option 2: Locally with PySpark
 i. Install PySpark:
-pip install pyspark
-
-ii. Replace dbfs:/ paths with local paths (./data/filename.parquet).
-
-iii. Run the script / notebook on local Spark.
+ii. pip install -r requirements.txt
+iii. Replace DBFS paths with local paths (e.g., data/customers_sample.parquet).
+iv. Run .py notebooks/scripts using Python.
 
 📈 Future Improvements
+Incremental data loading & ETL automation
+Delta Lake for versioned data
+Orchestration using Airflow or Azure Data Factory
+Connect to Power BI / dashboards for reporting
 
-a. Add incremental data loading logic.
+🙌 Acknowledgements
 
-b. Integrate Delta Lake for versioned data.
-
-c. Orchestrate with Airflow / ADF.
-
-d. Connect to Power BI for visualization.
-
-🙌 Acknowledgement
-Inspired by Ansh Lamba’s Databricks End-to-End project. Extended & adapted for learning purposes.
+Inspired by Ansh Lamba’s Databricks End-to-End Project; adapted for learning purposes and portfolio use.
