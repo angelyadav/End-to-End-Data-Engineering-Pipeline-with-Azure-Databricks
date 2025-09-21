@@ -1,0 +1,29 @@
+# Byte-compiled / cache
+__pycache__/
+*.py[cod]
+*.egg-info/
+
+# Virtual environments
+.env
+.venv/
+env/
+venv/
+
+# Databricks
+.dbc
+*.dbc
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Logs
+*.log
+
+# OS files
+.DS_Store
+
+# Data (avoid pushing heavy data files)
+data/
+*.parquet
+*.csv
+
